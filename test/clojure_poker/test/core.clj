@@ -12,7 +12,7 @@
   (is (some #{(card-of :ace :hearts)} deck))
   (is (some #{(card-of :ace :spades)} deck)))
 
-(deftest royal-flush
+(deftest is-a-royal-flush
   (is (= true (royal-flush? [(card-of :ten :clubs)
 			     (card-of :jack :clubs)
 			     (card-of :queen :clubs)
@@ -29,7 +29,7 @@
 			      (card-of :king :clubs)
 			      (card-of :nine :clubs)]))))
 
-(deftest straight-flush
+(deftest is-a-straight-flush
   (is (= true (straight-flush? [(card-of :two :clubs)
 		   	        (card-of :three :clubs)
 			        (card-of :four :clubs)
@@ -41,7 +41,7 @@
 			         (card-of :five :clubs)
 			         (card-of :six :clubs)]))))
 
-(deftest four-of-a-kind
+(deftest is-a-four-of-a-kind
   (is (= true (four-of-a-kind? [(card-of :two :clubs)
 		   	        (card-of :two :hearts)
 			        (card-of :two :spades)
@@ -53,7 +53,7 @@
 			         (card-of :six :diamonds)
 			         (card-of :six :clubs)]))))
   
-(deftest straight
+(deftest is-a-straight
   (is (= true (straight? [(card-of :ten :clubs)
 			  (card-of :jack :diamonds)
 			  (card-of :queen :hearts)
@@ -65,7 +65,7 @@
 			   (card-of :king :clubs)
 			   (card-of :ace :clubs)]))))
 
-(deftest flush
+(deftest is-a-flush
   (is (= true (flush? [(card-of :four :clubs)
 		       (card-of :jack :clubs)
 		       (card-of :queen :clubs)
