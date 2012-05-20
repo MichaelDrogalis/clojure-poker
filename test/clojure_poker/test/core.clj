@@ -22,4 +22,10 @@
 			      (card-of :jack :clubs)
 			      (card-of :queen :clubs)
 			      (card-of :king :clubs)
-			      (card-of :ace :clubs)]))))
+			      (card-of :ace :clubs)])))
+  (is (= false (royal-flush? [(card-of :ten :clubs)
+			      (card-of :jack :clubs)
+			      (card-of :queen :clubs)
+			      (card-of :king :clubs)
+			      (card-of :nine :clubs)]))))
+
