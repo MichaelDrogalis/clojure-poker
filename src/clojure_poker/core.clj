@@ -13,3 +13,10 @@
 
 (defn card-of [name suit]
   (first (filter #(and (= (:name (:rank %)) name) (= (:suit %) suit)) deck)))
+
+(defn flush? [hand]
+  (apply = (map :suit hand)))
+
+(defn royal-flush? [hand]
+  (and (flush? hand)
+       (= (into #{} (map :name (map :rank hand))) #{:ten :jack :queen :king :ace})))

@@ -11,3 +11,15 @@
   (is (some #{(card-of :ace :diamonds)} deck))
   (is (some #{(card-of :ace :hearts)} deck))
   (is (some #{(card-of :ace :spades)} deck)))
+
+(deftest royal-flush
+  (is (= true (royal-flush? [(card-of :ten :clubs)
+			     (card-of :jack :clubs)
+			     (card-of :queen :clubs)
+			     (card-of :king :clubs)
+			     (card-of :ace :clubs)])))
+  (is (= false (royal-flush? [(card-of :ten :diamonds)
+			      (card-of :jack :clubs)
+			      (card-of :queen :clubs)
+			      (card-of :king :clubs)
+			      (card-of :ace :clubs)]))))
