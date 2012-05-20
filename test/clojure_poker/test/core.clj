@@ -2,5 +2,10 @@
   (:use [clojure-poker.core])
   (:use [clojure.test]))
 
-(deftest replace-me ;; FIXME: write
-  (is false "No tests have been written."))
+(deftest deck-has-52-cards
+  (is
+   (= (count deck) 52)))
+
+(deftest deck-has-all-suites-of-aces
+  (is
+   (some #{(card-of :ace :diamonds)} deck)))
