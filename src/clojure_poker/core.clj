@@ -24,6 +24,10 @@
 (defn flush? [hand]
   (apply = (map :suit hand)))
 
+(defn four-of-a-kind? [hand]
+  (let [values (map :value (map :rank hand))]
+    (boolean (some #(= (count %) 4) (partition-by identity values)))))
+
 (defn straight-flush? [hand]
   (and (straight? hand) (flush? hand)))
 

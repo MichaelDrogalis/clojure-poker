@@ -40,6 +40,18 @@
 			         (card-of :four :clubs)
 			         (card-of :five :clubs)
 			         (card-of :six :clubs)]))))
+
+(deftest four-of-a-kind
+  (is (= true (four-of-a-kind? [(card-of :two :clubs)
+		   	        (card-of :two :hearts)
+			        (card-of :two :spades)
+			        (card-of :two :diamonds)
+			        (card-of :six :clubs)])))
+  (is (= false (four-of-a-kind? [(card-of :two :clubs)
+		   	         (card-of :two :hearts)
+			         (card-of :two :spades)
+			         (card-of :six :diamonds)
+			         (card-of :six :clubs)]))))
   
 (deftest straight
   (is (= true (straight? [(card-of :ten :clubs)
