@@ -21,9 +21,10 @@
 (defn straight? [hand]
   (let [card-vals (into #{} (map :value (map :rank hand)))
 	min-val   (apply min card-vals)
-	max-val   (apply max card-vals)]
-    (and (= (into #{} (range min-val (inc max-val))) card-vals)
-         (= (count (range min-val (inc max-val))) straight-length))))
+	max-val   (apply max card-vals)
+	val-range (range min-val (inc max-val))]
+    (and (= (into #{} val-range) card-vals)
+         (= (count val-range) straight-length))))
 
 (defn flush? [hand]
   (apply = (map :suit hand)))
