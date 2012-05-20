@@ -29,6 +29,18 @@
 			      (card-of :king :clubs)
 			      (card-of :nine :clubs)]))))
 
+(deftest straight-flush
+  (is (= true (straight-flush? [(card-of :two :clubs)
+		   	        (card-of :three :clubs)
+			        (card-of :four :clubs)
+			        (card-of :five :clubs)
+			        (card-of :six :clubs)])))
+  (is (= false (straight-flush? [(card-of :two :hearts)
+		   	         (card-of :three :clubs)
+			         (card-of :four :clubs)
+			         (card-of :five :clubs)
+			         (card-of :six :clubs)]))))
+  
 (deftest straight
   (is (= true (straight? [(card-of :ten :clubs)
 			  (card-of :jack :diamonds)
@@ -48,9 +60,9 @@
 		       (card-of :king :clubs)
 		       (card-of :ace :clubs)])))
   (is (= false (flush? [(card-of :four :clubs)
-		       (card-of :jack :clubs)
-		       (card-of :queen :clubs)
-		       (card-of :king :clubs)
-		       (card-of :ace :hearts)]))))
+		        (card-of :jack :clubs)
+		        (card-of :queen :clubs)
+		        (card-of :king :clubs)
+		        (card-of :ace :hearts)]))))
 
   

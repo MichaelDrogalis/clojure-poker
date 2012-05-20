@@ -24,6 +24,9 @@
 (defn flush? [hand]
   (apply = (map :suit hand)))
 
+(defn straight-flush? [hand]
+  (and (straight? hand) (flush? hand)))
+
 (defn royal-flush? [hand]
   (and (flush? hand)
        (= (into #{} (map :name (map :rank hand))) #{:ten :jack :queen :king :ace})))
