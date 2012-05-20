@@ -21,7 +21,6 @@
     (and (= (into #{} (range min-val (inc max-val))) card-vals)
          (= (count (range min-val (inc max-val))) 5))))
 
-
 (defn flush? [hand]
   (apply = (map :suit hand)))
 

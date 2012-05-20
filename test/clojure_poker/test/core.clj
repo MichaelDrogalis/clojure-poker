@@ -40,3 +40,17 @@
 			   (card-of :queen :hearts)
 			   (card-of :king :clubs)
 			   (card-of :ace :clubs)]))))
+
+(deftest flush
+  (is (= true (flush? [(card-of :four :clubs)
+		       (card-of :jack :clubs)
+		       (card-of :queen :clubs)
+		       (card-of :king :clubs)
+		       (card-of :ace :clubs)])))
+  (is (= false (flush? [(card-of :four :clubs)
+		       (card-of :jack :clubs)
+		       (card-of :queen :clubs)
+		       (card-of :king :clubs)
+		       (card-of :ace :hearts)]))))
+
+  
