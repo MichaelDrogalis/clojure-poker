@@ -29,3 +29,14 @@
 			      (card-of :king :clubs)
 			      (card-of :nine :clubs)]))))
 
+(deftest straight
+  (is (= true (straight? [(card-of :ten :clubs)
+			  (card-of :jack :diamonds)
+			  (card-of :queen :hearts)
+			  (card-of :king :clubs)
+			  (card-of :ace :clubs)])))
+  (is (= false (straight? [(card-of :two :clubs)
+			  (card-of :jack :diamonds)
+			  (card-of :queen :hearts)
+			  (card-of :king :clubs)
+			  (card-of :ace :clubs)]))))
