@@ -33,4 +33,4 @@
 
 (defn royal-flush? [hand]
   (and (flush? hand)
-       (= (into #{} (map :name (map :rank hand))) #{:ten :jack :queen :king :ace})))
+       (= (into #{} (map :name (map :rank hand))) (into #{} (take-last 5 (map :name ranks))))))
