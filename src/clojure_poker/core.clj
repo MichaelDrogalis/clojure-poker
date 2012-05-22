@@ -7,8 +7,6 @@
 (def ranks (map #(Rank. %1 %2) [:two :three :four :five :six :seven :eight :nine :ten :jack :queen :king :ace] (range)))
 (def suits #{:clubs :diamonds :hearts :spades})
 
-(def straight-length 5)
-
 (def deck
      (mapcat (fn [rank]
 	       (map (fn [suit] (Card. rank suit)) suits))
@@ -37,7 +35,8 @@
   (let [card-vals (into #{} (map :value (map :rank hand)))
 	min-val   (apply min card-vals)
 	max-val   (apply max card-vals)
-	val-range (range min-val (inc max-val))]
+	val-range (range min-val (inc max-val))
+        straight-length 5]
     (and (= (into #{} val-range) card-vals)
          (= (count val-range) straight-length))))
 
