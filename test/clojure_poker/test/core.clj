@@ -77,4 +77,15 @@
 		        (card-of :king :clubs)
 		        (card-of :ace :hearts)]))))
 
-  
+(deftest is-three-of-a-kind
+  (is (= true (three-of-a-kind? [(card-of :four :clubs)
+		                 (card-of :four :hearts)
+		                 (card-of :four :spades)
+		                 (card-of :king :clubs)
+		                 (card-of :ace :clubs)])))
+  (is (= false (three-of-a-kind? [(card-of :four :clubs)
+	 	                  (card-of :four :hearts)
+		                  (card-of :five :spades)
+		                  (card-of :king :clubs)
+		                  (card-of :ace :clubs)]))))
+

@@ -18,6 +18,14 @@
 		       (= (:suit %) suit))
 		 deck)))
 
+(defn n-of-a-kind? [n hand]
+  (let [values (map :value (map :rank hand))]
+    (boolean (some #(= (count %) n)
+		   (partition-by identity values)))))
+
+(defn three-of-a-kind? [hand]
+  (n-of-a-kind? 3 hand))
+
 (defn straight? [hand]
   (let [card-vals (into #{} (map :value (map :rank hand)))
 	min-val   (apply min card-vals)
@@ -30,10 +38,8 @@
   (apply = (map :suit hand)))
 
 (defn four-of-a-kind? [hand]
-  (let [values (map :value (map :rank hand))]
-    (boolean (some #(= (count %) 4)
-		   (partition-by identity values)))))
-
+  (n-of-a-kind? 4 hand))
+  
 (defn straight-flush? [hand]
   (and (straight? hand) (flush? hand)))
 
