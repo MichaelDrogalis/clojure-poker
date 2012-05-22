@@ -89,3 +89,14 @@
 		                  (card-of :king :clubs)
 		                  (card-of :ace :clubs)]))))
 
+(deftest is-one-pair
+  (is (= true (one-pair? [(card-of :four :clubs)
+		          (card-of :four :hearts)
+		          (card-of :five :spades)
+		          (card-of :king :clubs)
+		          (card-of :ace :clubs)])))
+  (is (= false (one-pair? [(card-of :four :clubs)
+		           (card-of :three :hearts)
+		           (card-of :five :spades)
+		           (card-of :king :clubs)
+		           (card-of :ace :clubs)]))))

@@ -23,6 +23,9 @@
     (boolean (some #(= (count %) n)
 		   (partition-by identity values)))))
 
+(defn one-pair? [hand]
+  (n-of-a-kind? 2 hand))
+
 (defn three-of-a-kind? [hand]
   (n-of-a-kind? 3 hand))
 
