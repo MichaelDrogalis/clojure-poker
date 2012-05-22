@@ -1,4 +1,5 @@
-(ns clojure-poker.core)
+(ns clojure-poker.core
+  (:use [clojure.math.combinatorics]))
 
 (defrecord Rank [name value])
 (defrecord Card [rank suit])
@@ -26,6 +27,9 @@
 (defn one-pair? [hand]
   (n-of-a-kind? 2 hand))
 
+(defn two-pair? [hand]
+  (= (count (filter identity (map one-pair? (combinations hand 2)))) 2))
+  
 (defn three-of-a-kind? [hand]
   (n-of-a-kind? 3 hand))
 

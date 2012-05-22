@@ -89,6 +89,23 @@
 		                  (card-of :king :clubs)
 		                  (card-of :ace :clubs)]))))
 
+(deftest is-two-pair
+  (is (= true (two-pair? [(card-of :four :clubs)
+		          (card-of :four :hearts)
+		          (card-of :five :spades)
+		          (card-of :five :clubs)
+		          (card-of :ace :clubs)])))
+  (is (= false (two-pair? [(card-of :four :clubs)
+		           (card-of :four :hearts)
+		           (card-of :five :spades)
+		           (card-of :six :clubs)
+		           (card-of :ace :clubs)])))
+  (is (= true (two-pair? [(card-of :four :clubs)
+		          (card-of :ace :hearts)
+		          (card-of :five :spades)
+		          (card-of :four :diamonds)
+		          (card-of :ace :clubs)]))))
+
 (deftest is-one-pair
   (is (= true (one-pair? [(card-of :four :clubs)
 		          (card-of :four :hearts)
