@@ -61,6 +61,7 @@
   (cond (royal-flush? hand) :royal-flush
 	(straight-flush? hand) :straight-flush
 	(four-of-a-kind? hand) :four-of-a-kind
+	(full-house? hand) :full-house
 	(flush? hand) :flush
 	(straight? hand) :straight
 	(three-of-a-kind? hand) :three-of-a-kind

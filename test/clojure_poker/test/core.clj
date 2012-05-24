@@ -156,6 +156,14 @@
 	(card-of :ten :diamonds)
 	(card-of :king :clubs)])))
   (is
+   (= :full-house
+      (hand-status
+       [(card-of :ten :clubs)
+	(card-of :ten :spades)
+	(card-of :ten :hearts)
+	(card-of :king :diamonds)
+	(card-of :king :clubs)])))
+  (is
    (= :straight
       (hand-status
        [(card-of :nine :clubs)
