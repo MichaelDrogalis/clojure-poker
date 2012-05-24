@@ -53,3 +53,7 @@
   (and (flush? hand)
        (= (into #{} (map :name (map :rank hand)))
 	  (into #{} (take-last 5 (map :name ranks))))))
+
+(defn hand-status [hand]
+  (cond (royal-flush? hand) :royal-flush
+	(straight-flush? hand) :straight-flush))

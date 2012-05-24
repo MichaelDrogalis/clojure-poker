@@ -117,3 +117,21 @@
 		           (card-of :five :spades)
 		           (card-of :king :clubs)
 		           (card-of :ace :clubs)]))))
+
+(deftest what-hand
+  (is
+   (= :royal-flush
+      (hand-status
+       [(card-of :ten :clubs)
+	(card-of :jack :clubs)
+	(card-of :queen :clubs)
+	(card-of :king :clubs)
+	(card-of :ace :clubs)])))
+  (is
+   (= :straight-flush
+      (hand-status
+       [(card-of :ten :clubs)
+	(card-of :jack :clubs)
+	(card-of :queen :clubs)
+	(card-of :king :clubs)
+	(card-of :nine :clubs)]))))
