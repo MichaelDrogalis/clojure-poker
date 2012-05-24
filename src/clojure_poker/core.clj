@@ -43,6 +43,9 @@
 (defn flush? [hand]
   (apply = (map :suit hand)))
 
+(defn full-house? [hand]
+  (and (three-of-a-kind? hand) (one-pair? hand)))
+
 (defn four-of-a-kind? [hand]
   (n-of-a-kind? 4 hand))
   

@@ -52,7 +52,19 @@
 			         (card-of :two :spades)
 			         (card-of :six :diamonds)
 			         (card-of :six :clubs)]))))
-  
+
+(deftest is-a-full-house
+  (is (= true (full-house? [(card-of :two :clubs)
+		   	    (card-of :two :hearts)
+			    (card-of :two :spades)
+			    (card-of :six :diamonds)
+			    (card-of :six :clubs)])))
+  (is (= false (full-house? [(card-of :two :clubs)
+		   	     (card-of :two :hearts)
+			     (card-of :two :spades)
+			     (card-of :seven :diamonds)
+			     (card-of :six :clubs)]))))
+
 (deftest is-a-straight
   (is (= true (straight? [(card-of :ten :clubs)
 			  (card-of :jack :diamonds)
