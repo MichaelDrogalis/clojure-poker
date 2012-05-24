@@ -129,3 +129,17 @@
 		           (card-of :five :spades)
 		           (card-of :king :clubs)
 		           (card-of :ace :clubs)]))))
+
+(deftest hand-comparisons
+  (let
+      [players { :player-1 [(card-of :two :clubs)
+		            (card-of :three :hearts)
+		            (card-of :four :spades)
+		            (card-of :five :clubs)
+		            (card-of :six :clubs)]
+		 :player-2  [(card-of :seven :clubs)
+		             (card-of :three :hearts)
+		             (card-of :four :spades)
+		             (card-of :six :spades)
+		             (card-of :six :clubs)] }]
+    (is (= :player-1 (winner-of players)))))
