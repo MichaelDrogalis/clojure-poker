@@ -57,21 +57,22 @@
        (= (into #{} (map :name (map :rank hand)))
 	  (into #{} (take-last 5 (map :name ranks))))))
 
+(defn compute-score [hand]
+  (cond (royal-flush? hand) 1000
+	(straight-flush? hand) 900
+	(four-of-a-kind? hand) 800
+	(full-house? hand) 700
+	(flush? hand) 600
+	(straight? hand) 500
+	(three-of-a-kind? hand) 400
+	(two-pair? hand) 300
+	(one-pair? hand) 200))
+
 (defn winner-of [players]
   (let [scores
 	(into #{}
 	      (map
 	       (fn [[player players-hand]]
-		 (letfn [(make-score [hand]
-				     (cond (royal-flush? hand) 1000
-					   (straight-flush? hand) 900
-					   (four-of-a-kind? hand) 800
-	                                   (full-house? hand) 700
-	                                   (flush? hand) 600
-	                                   (straight? hand) 500
-	                                   (three-of-a-kind? hand) 400
-	                                   (two-pair? hand) 300
-	                                   (one-pair? hand) 200))]
-		   { player (make-score players-hand) }))
+		 { player (compute-score players-hand) })
 	       players))]
     (first (keys (apply #(max-key count %2) scores)))))
