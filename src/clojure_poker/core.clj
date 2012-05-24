@@ -71,8 +71,8 @@
 (defn winner-of [players]
   (let [scores
 	(into #{}
-	      (map
+	      (mapcat
 	       (fn [[player players-hand]]
 		 { player (compute-score players-hand) })
 	       players))]
-    (first (keys (apply #(max-key count %2) scores)))))
+    #{(first (apply max-key count scores))}))
