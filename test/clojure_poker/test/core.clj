@@ -158,4 +158,29 @@
 	(card-of :ten :clubs)
 	(card-of :jack :clubs)
 	(card-of :queen :clubs)
+	(card-of :two :clubs)])))
+  (is
+   (= :three-of-a-kind
+      (hand-status
+       [(card-of :nine :clubs)
+	(card-of :nine :spades)
+	(card-of :nine :hearts)
+	(card-of :queen :clubs)
+	(card-of :two :clubs)])))
+  (is
+   (= :two-pair
+      (hand-status
+       [(card-of :nine :clubs)
+	(card-of :nine :spades)
+	(card-of :queen :hearts)
+	(card-of :queen :clubs)
+	(card-of :two :clubs)])))
+  (is
+   (= :one-pair
+      (hand-status
+       [(card-of :nine :clubs)
+	(card-of :nine :spades)
+	(card-of :king :hearts)
+	(card-of :queen :clubs)
 	(card-of :two :clubs)]))))
+

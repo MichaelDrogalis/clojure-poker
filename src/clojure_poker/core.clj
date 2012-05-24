@@ -59,4 +59,7 @@
 	(straight-flush? hand) :straight-flush
 	(four-of-a-kind? hand) :four-of-a-kind
 	(flush? hand) :flush
-	(straight? hand) :straight))
+	(straight? hand) :straight
+	(three-of-a-kind? hand) :three-of-a-kind
+	(two-pair? hand) :two-pair
+	(one-pair? hand) :one-pair))
