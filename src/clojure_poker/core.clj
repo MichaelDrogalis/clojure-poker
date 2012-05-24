@@ -56,14 +56,3 @@
   (and (flush? hand)
        (= (into #{} (map :name (map :rank hand)))
 	  (into #{} (take-last 5 (map :name ranks))))))
-
-(defn hand-status [hand]
-  (cond (royal-flush? hand) :royal-flush
-	(straight-flush? hand) :straight-flush
-	(four-of-a-kind? hand) :four-of-a-kind
-	(full-house? hand) :full-house
-	(flush? hand) :flush
-	(straight? hand) :straight
-	(three-of-a-kind? hand) :three-of-a-kind
-	(two-pair? hand) :two-pair
-	(one-pair? hand) :one-pair))
