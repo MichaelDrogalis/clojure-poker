@@ -134,4 +134,28 @@
 	(card-of :jack :clubs)
 	(card-of :queen :clubs)
 	(card-of :king :clubs)
-	(card-of :nine :clubs)]))))
+	(card-of :nine :clubs)])))
+  (is
+   (= :four-of-a-kind
+      (hand-status
+       [(card-of :ten :clubs)
+	(card-of :ten :spades)
+	(card-of :ten :hearts)
+	(card-of :ten :diamonds)
+	(card-of :king :clubs)])))
+  (is
+   (= :straight
+      (hand-status
+       [(card-of :nine :clubs)
+	(card-of :ten :spades)
+	(card-of :jack :hearts)
+	(card-of :queen :diamonds)
+	(card-of :king :clubs)])))
+  (is
+   (= :flush
+      (hand-status
+       [(card-of :nine :clubs)
+	(card-of :ten :clubs)
+	(card-of :jack :clubs)
+	(card-of :queen :clubs)
+	(card-of :two :clubs)]))))

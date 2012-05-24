@@ -56,4 +56,7 @@
 
 (defn hand-status [hand]
   (cond (royal-flush? hand) :royal-flush
-	(straight-flush? hand) :straight-flush))
+	(straight-flush? hand) :straight-flush
+	(four-of-a-kind? hand) :four-of-a-kind
+	(flush? hand) :flush
+	(straight? hand) :straight))
