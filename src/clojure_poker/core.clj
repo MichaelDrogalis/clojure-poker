@@ -17,12 +17,22 @@
 		       (= (:suit %) suit))
 		 deck)))
 
-;;; Status functions.
+;;; Generic status helpers.
 (defn n-of-a-kind? [n hand]
   (let [values (map :value (map :rank hand))]
     (boolean (some #(= (count %) n)
 		   (partition-by identity values)))))
 
+(defn hand-values [hand]
+  (into #{} (map :value (map :rank hand))))
+
+(defn high-card-value [hand-vals]
+  (apply max hand-vals))
+
+(defn low-card-value [hand-vals]
+  (apply min hand-vals))
+
+;;; Hand status functions.
 (defn one-pair? [hand]
   (n-of-a-kind? 2 hand))
 
@@ -32,15 +42,9 @@
 (defn three-of-a-kind? [hand]
   (n-of-a-kind? 3 hand))
 
-(defn hand-values [hand]
-  (into #{} (map :value (map :rank hand))))
-
-(defn high-card-value [hand-vals]
-  (apply max hand-vals))
-
 (defn straight? [hand]
   (let [hand-vals (hand-values hand)
-	min-val   (apply min hand-vals)
+	min-val   (low-card-value hand-vals)
 	max-val   (high-card-value hand-vals)
 	val-range (range min-val (inc max-val))
         straight-length 5]
