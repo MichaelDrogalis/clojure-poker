@@ -69,7 +69,7 @@
 	  (into #{} (take-last 5 (map :name ranks))))))
 
 ;;; Scoring functions.
-(defn high-card-value-score [hand base-score]
+(defn highest-value-score [hand base-score]
   (+ base-score (high-card-value (hand-values hand))))
 
 (defn highest-paired-score [hand base-score]
@@ -81,16 +81,16 @@
   (highest-paired-score hand 200))
   
 (defn straight-score [hand]
-  (high-card-value-score hand 500))
+  (highest-value-score hand 500))
 
 (defn flush-score [hand]
-  (high-card-value-score hand 600))
+  (highest-value-score hand 600))
 
 (defn four-of-a-kind-score [hand]
   (highest-paired-score hand 800))
 
 (defn straight-flush-score [hand]
-  (high-card-value-score hand 900))
+  (highest-value-score hand 900))
 
 (defn royal-flush-score [_]
   1000)
