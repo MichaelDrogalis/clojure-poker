@@ -80,6 +80,13 @@
 (defn one-pair-score [hand]
   (highest-paired-score hand 200))
 
+(defn two-pair-score [hand]
+  (let [base-score 300
+	values (map :value (map :rank hand))]
+    (sort-by first
+	     (filter #(= (count %) 2))
+	     (partition-by identity values))))	   
+
 (defn three-of-a-kind-score [hand]
   (highest-paired-score hand 400))
   
@@ -106,7 +113,7 @@
 	(flush? hand) (flush-score hand)
 	(straight? hand) (straight-score hand)
 	(three-of-a-kind? hand) (three-of-a-kind-score hand)
-	(two-pair? hand) 300
+	(two-pair? hand) (two-pair-score hand)
 	(one-pair? hand) (one-pair-score hand)))
 
 (defn winner-of [players]
