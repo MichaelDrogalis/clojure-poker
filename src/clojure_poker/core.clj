@@ -106,7 +106,7 @@
   1000)
   
 (defn compute-score [hand]
-  (cond (royal-flush? hand) (royal-flush-score 1000) 
+  (cond (royal-flush? hand) (royal-flush-score hand)
 	(straight-flush? hand) (straight-flush-score hand)
 	(four-of-a-kind? hand) (four-of-a-kind-score hand)
 	(full-house? hand) 700
