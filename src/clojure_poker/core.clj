@@ -32,13 +32,19 @@
 (defn three-of-a-kind? [hand]
   (n-of-a-kind? 3 hand))
 
+(defn hand-values [hand]
+  (into #{} (map :value (map :rank hand))))
+
+(defn high-card-value [hand-vals]
+  (apply max hand-vals))
+
 (defn straight? [hand]
-  (let [card-vals (into #{} (map :value (map :rank hand)))
-	min-val   (apply min card-vals)
-	max-val   (apply max card-vals)
+  (let [hand-vals (hand-values hand)
+	min-val   (apply min hand-vals)
+	max-val   (high-card-value hand-vals)
 	val-range (range min-val (inc max-val))
         straight-length 5]
-    (and (= (into #{} val-range) card-vals)
+    (and (= (into #{} val-range) hand-vals)
          (= (count val-range) straight-length))))
 
 (defn flush? [hand]
@@ -61,8 +67,7 @@
 ;;; Scoring functions.
 (defn straight-score [hand]
   (let [base-score 500
-	card-vals (into #{} (map :value (map :rank hand)))
-	max-val (apply max card-vals)]
+	max-val (high-card-value (hand-values hand))]
     (+ base-score max-val)))
 
 (defn compute-score [hand]
