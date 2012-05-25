@@ -69,15 +69,14 @@
 	  (into #{} (take-last 5 (map :name ranks))))))
 
 ;;; Scoring functions.
+(defn high-card-value-score [hand base-value]
+  (+ base-value (high-card-value (hand-values hand))))
+
 (defn straight-score [hand]
-  (let [base-score 500
-	max-val (high-card-value (hand-values hand))]
-    (+ base-score max-val)))
+  (high-card-value-score hand 500))
 
 (defn flush-score [hand]
-  (let [base-score 600
-      	max-val (high-card-value (hand-values hand))]
-    (+ base-score max-val)))
+  (high-card-value-score hand 600))
 
 (defn four-of-a-kind-score [hand]
   (let [base-score 800
@@ -86,9 +85,7 @@
        (first (apply max-key count (partition-by identity values))))))
 
 (defn straight-flush-score [hand]
-  (let [base-score 900
-      	max-val (high-card-value (hand-values hand))]
-    (+ base-score max-val)))
+  (high-card-value-score hand 900))
   
 (defn compute-score [hand]
   (cond (royal-flush? hand) 1000
