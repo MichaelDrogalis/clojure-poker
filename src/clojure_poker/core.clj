@@ -83,9 +83,11 @@
 (defn two-pair-score [hand]
   (let [base-score 300
 	values (hand-values hand)]
-    (sort-by first
-	     (filter #(= (count %) 2))
-	     (partition-by identity values))))	   
+    (+ base-score
+       (first (first
+	       (sort-by first
+			(filter #(= (count %) 2))
+			(partition-by identity values)))))))
 
 (defn three-of-a-kind-score [hand]
   (highest-paired-score hand 400))
