@@ -73,7 +73,7 @@
   (+ base-score (high-card-value (hand-values hand))))
 
 (defn highest-paired-score [hand base-score]
-  (let [values (map :value (map :rank hand))]
+  (let [values (hand-values hand)]
     (+ base-score
        (first (apply max-key count (partition-by identity values))))))
 
@@ -82,7 +82,7 @@
 
 (defn two-pair-score [hand]
   (let [base-score 300
-	values (map :value (map :rank hand))]
+	values (hand-values hand)]
     (sort-by first
 	     (filter #(= (count %) 2))
 	     (partition-by identity values))))	   
