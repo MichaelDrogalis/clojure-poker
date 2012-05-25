@@ -166,4 +166,16 @@
 		            (card-of :four :hearts)
 		            (card-of :five :spades)
 		            (card-of :six :spades)]}]
-    (is (= #{:player-2} (winner-of players)))))
+    (is (= #{:player-2} (winner-of players))))
+  (let
+      [players {:player-1 [(card-of :ace :clubs)
+		           (card-of :three :clubs)
+		           (card-of :four :clubs)
+		           (card-of :five :clubs)
+		           (card-of :six :clubs)]
+		:player-2  [(card-of :king :hearts)
+		            (card-of :three :hearts)
+		            (card-of :four :hearts)
+		            (card-of :five :hearts)
+		            (card-of :six :hearts)]}]
+    (is (= #{:player-1} (winner-of players)))))

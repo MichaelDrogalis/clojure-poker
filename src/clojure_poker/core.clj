@@ -74,12 +74,17 @@
 	max-val (high-card-value (hand-values hand))]
     (+ base-score max-val)))
 
+(defn flush-score [hand]
+  (let [base-score 600
+      	max-val (high-card-value (hand-values hand))]
+    (+ base-score max-val)))
+
 (defn compute-score [hand]
   (cond (royal-flush? hand) 1000
 	(straight-flush? hand) 900
 	(four-of-a-kind? hand) 800
 	(full-house? hand) 700
-	(flush? hand) 600
+	(flush? hand) (flush-score hand)
 	(straight? hand) (straight-score hand)
 	(three-of-a-kind? hand) 400
 	(two-pair? hand) 300
@@ -90,5 +95,5 @@
 	(into #{}
 	      (mapcat (fn [[player hand]] { player (compute-score hand) })
 		      players))
-	high-score (second (apply max-key count scores))]
+	high-score (second (apply max-key second scores))]
     (into #{} (map first (filter #(= high-score (second %)) scores)))))
