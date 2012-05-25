@@ -17,6 +17,7 @@
 		       (= (:suit %) suit))
 		 deck)))
 
+;;; Status functions.
 (defn n-of-a-kind? [n hand]
   (let [values (map :value (map :rank hand))]
     (boolean (some #(= (count %) n)
@@ -57,13 +58,20 @@
        (= (into #{} (map :name (map :rank hand)))
 	  (into #{} (take-last 5 (map :name ranks))))))
 
+;;; Scoring functions.
+(defn straight-score [hand]
+  (let [base-score 500
+	card-vals (into #{} (map :value (map :rank hand)))
+	max-val (apply max card-vals)]
+    (+ base-score max-val)))
+
 (defn compute-score [hand]
   (cond (royal-flush? hand) 1000
 	(straight-flush? hand) 900
 	(four-of-a-kind? hand) 800
 	(full-house? hand) 700
 	(flush? hand) 600
-	(straight? hand) 500
+	(straight? hand) (straight-score hand)
 	(three-of-a-kind? hand) 400
 	(two-pair? hand) 300
 	(one-pair? hand) 200))
@@ -71,9 +79,7 @@
 (defn winner-of [players]
   (let [scores
 	(into #{}
-	      (mapcat
-	       (fn [[player players-hand]]
-		 { player (compute-score players-hand) })
-	       players))
+	      (mapcat (fn [[player hand]] { player (compute-score hand) })
+		      players))
 	high-score (second (apply max-key count scores))]
     (into #{} (map first (filter #(= high-score (second %)) scores)))))
