@@ -96,6 +96,9 @@
 (defn flush-score [hand]
   (highest-value-score hand 600))
 
+(defn full-house-score [hand]
+  (highest-value-score hand 700))
+
 (defn four-of-a-kind-score [hand]
   (highest-paired-score hand 800))
 
@@ -109,7 +112,7 @@
   (cond (royal-flush? hand) (royal-flush-score hand)
 	(straight-flush? hand) (straight-flush-score hand)
 	(four-of-a-kind? hand) (four-of-a-kind-score hand)
-	(full-house? hand) 700
+	(full-house? hand) (full-house-score hand)
 	(flush? hand) (flush-score hand)
 	(straight? hand) (straight-score hand)
 	(three-of-a-kind? hand) (three-of-a-kind-score hand)
