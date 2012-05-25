@@ -86,9 +86,12 @@
 
 (defn straight-flush-score [hand]
   (high-card-value-score hand 900))
+
+(defn royal-flush-score [_]
+  1000)
   
 (defn compute-score [hand]
-  (cond (royal-flush? hand) 1000
+  (cond (royal-flush? hand) (royal-flush-score 1000) 
 	(straight-flush? hand) (straight-flush-score hand)
 	(four-of-a-kind? hand) (four-of-a-kind-score hand)
 	(full-house? hand) 700
