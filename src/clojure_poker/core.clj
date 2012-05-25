@@ -74,5 +74,6 @@
 	      (mapcat
 	       (fn [[player players-hand]]
 		 { player (compute-score players-hand) })
-	       players))]
-    #{(first (apply max-key count scores))}))
+	       players))
+	high-score (second (apply max-key count scores))]
+    (into #{} (map first (filter #(= high-score (second %)) scores)))))
