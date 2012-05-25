@@ -72,6 +72,12 @@
 (defn high-card-value-score [hand base-value]
   (+ base-value (high-card-value (hand-values hand))))
 
+(defn one-pair-score [hand]
+  (let [base-score 200
+        values (map :value (map :rank hand))]
+    (+ base-score
+       (first (apply max-key count (partition-by identity values))))))
+
 (defn straight-score [hand]
   (high-card-value-score hand 500))
 
@@ -99,7 +105,7 @@
 	(straight? hand) (straight-score hand)
 	(three-of-a-kind? hand) 400
 	(two-pair? hand) 300
-	(one-pair? hand) 200))
+	(one-pair? hand) (one-pair-score hand)))
 
 (defn winner-of [players]
   (let [scores
