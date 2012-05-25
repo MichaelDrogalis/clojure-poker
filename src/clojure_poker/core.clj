@@ -79,6 +79,9 @@
 
 (defn one-pair-score [hand]
   (highest-paired-score hand 200))
+
+(defn three-of-a-kind-score [hand]
+  (highest-paired-score hand 400))
   
 (defn straight-score [hand]
   (highest-value-score hand 500))
@@ -102,7 +105,7 @@
 	(full-house? hand) 700
 	(flush? hand) (flush-score hand)
 	(straight? hand) (straight-score hand)
-	(three-of-a-kind? hand) 400
+	(three-of-a-kind? hand) (three-of-a-kind-score hand)
 	(two-pair? hand) 300
 	(one-pair? hand) (one-pair-score hand)))
 
