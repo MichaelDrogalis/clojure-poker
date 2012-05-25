@@ -190,4 +190,16 @@
 		            (card-of :six :hearts)
 		            (card-of :seven :hearts)
 		            (card-of :eight :hearts)]}]
+    (is (= #{:player-2} (winner-of players))))
+  (let
+      [players {:player-1 [(card-of :two :clubs)
+		           (card-of :two :spades)
+		           (card-of :two :hearts)
+		           (card-of :two :diamonds)
+		           (card-of :six :clubs)]
+		:player-2  [(card-of :five :hearts)
+		            (card-of :five :clubs)
+		            (card-of :five :spades)
+		            (card-of :five :diamonds)
+		            (card-of :eight :hearts)]}]
     (is (= #{:player-2} (winner-of players)))))

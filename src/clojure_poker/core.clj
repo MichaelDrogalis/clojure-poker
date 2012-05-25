@@ -79,6 +79,12 @@
       	max-val (high-card-value (hand-values hand))]
     (+ base-score max-val)))
 
+(defn four-of-a-kind-score [hand]
+  (let [base-score 800
+        values (map :value (map :rank hand))]
+    (+ base-score
+       (first (apply max-key count (partition-by identity values))))))
+
 (defn straight-flush-score [hand]
   (let [base-score 900
       	max-val (high-card-value (hand-values hand))]
@@ -87,7 +93,7 @@
 (defn compute-score [hand]
   (cond (royal-flush? hand) 1000
 	(straight-flush? hand) (straight-flush-score hand)
-	(four-of-a-kind? hand) 800
+	(four-of-a-kind? hand) (four-of-a-kind-score hand)
 	(full-house? hand) 700
 	(flush? hand) (flush-score hand)
 	(straight? hand) (straight-score hand)
