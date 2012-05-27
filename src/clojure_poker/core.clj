@@ -130,25 +130,6 @@
 	high-score (second (apply max-key second scores))]
     (into #{} (map first (filter #(= high-score (second %)) scores)))))
 
-(defn play-game []
-  (let [cards (shuffle deck)
-	player-1
-	[(card-of :ace :clubs)
-		           (card-of :ace :spades)
-		           (card-of :ace :hearts)
-		           (card-of :five :diamonds)
-		           (card-of :five :clubs)]
-	
-	player-2
-	  [(card-of :king :hearts)
-		            (card-of :king :clubs)
-		            (card-of :king :spades)
-		            (card-of :nine :diamonds)
-		            (card-of :nine :hearts)]
-	players  {:player-1 player-1 :player-2 player-2}]
-    (winner-of players)))
-
-
 (defn -main [& args]
   (play-game))
 
