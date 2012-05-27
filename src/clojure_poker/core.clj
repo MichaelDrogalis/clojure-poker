@@ -17,6 +17,9 @@
 		       (= (:suit %) suit))
 		 deck)))
 
+(defn pretty-card [card]
+  (str (name (:name (:rank card))) " of " (name (:suit card))))
+
 ;;; Generic status helpers.
 (defn n-of-a-kind? [n hand]
   (let [values (map :value (map :rank hand))]
@@ -24,7 +27,7 @@
 		   (partition-by identity values)))))
 
 (defn hand-values [hand]
-  (into #{} (map :value (map :rank hand))))
+  (map :value (map :rank hand)))
 
 (defn high-card-value [hand-vals]
   (apply max hand-vals))
@@ -43,12 +46,12 @@
   (n-of-a-kind? 3 hand))
 
 (defn straight? [hand]
-  (let [hand-vals (hand-values hand)
+  (let [hand-vals (sort (hand-values hand))
 	min-val   (low-card-value hand-vals)
 	max-val   (high-card-value hand-vals)
 	val-range (range min-val (inc max-val))
         straight-length 5]
-    (and (= (into #{} val-range) hand-vals)
+    (and (= val-range hand-vals)
          (= (count val-range) straight-length))))
 
 (defn flush? [hand]
@@ -84,10 +87,8 @@
   (let [base-score 300
 	values (hand-values hand)]
     (+ base-score
-       (first (first
-	       (sort-by first
-			(filter #(= (count %) 2))
-			(partition-by identity values)))))))
+       (apply max (flatten (filter #(= (count %) 2)
+				   (partition-by identity values)))))))
 
 (defn three-of-a-kind-score [hand]
   (highest-paired-score hand 400))
@@ -128,3 +129,26 @@
 		      players))
 	high-score (second (apply max-key second scores))]
     (into #{} (map first (filter #(= high-score (second %)) scores)))))
+
+(defn play-game []
+  (let [cards (shuffle deck)
+	player-1
+	[(card-of :ace :clubs)
+		           (card-of :ace :spades)
+		           (card-of :ace :hearts)
+		           (card-of :five :diamonds)
+		           (card-of :five :clubs)]
+	
+	player-2
+	  [(card-of :king :hearts)
+		            (card-of :king :clubs)
+		            (card-of :king :spades)
+		            (card-of :nine :diamonds)
+		            (card-of :nine :hearts)]
+	players  {:player-1 player-1 :player-2 player-2}]
+    (winner-of players)))
+
+
+(defn -main [& args]
+  (play-game))
+

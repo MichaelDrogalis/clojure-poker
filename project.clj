@@ -2,4 +2,5 @@
   :description "FIXME: write description"
   :dependencies [[org.clojure/clojure "1.4.0"]
 		 [org.clojure/math.combinatorics "0.0.2"]]
-  :plugins [[lein-swank "1.4.4"]])
+  :plugins [[lein-swank "1.4.4"]]
+  :main clojure-poker.core)
