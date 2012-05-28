@@ -78,41 +78,53 @@
        (first (apply max-key count (partition-by identity values))))))
 
 (defn high-card-score [hand]
-  ;; This is safe to do because the scoring cond
-  ;; guarantees we don't have any duplicate card
-  ;; values.
-  (apply + (map #(:value (:rank %)) hand)))
-  
+  (let [rank-names (map #(:name (:rank %)) hand)]
+    (letfn [(score [rank-name]
+		   (cond (= rank-name :ace)   3968
+			 (= rank-name :king)  1984
+			 (= rank-name :queen) 992
+			 (= rank-name :jack)  496
+			 (= rank-name :ten)   248
+			 (= rank-name :nine)  124
+			 (= rank-name :eight) 62
+			 (= rank-name :seven) 31
+			 (= rank-name :six)   16
+			 (= rank-name :five)  8
+			 (= rank-name :four)  4
+			 (= rank-name :three) 2
+			 (= rank-name :two)   1))]
+      (apply + (map score rank-names)))))
+
 (defn one-pair-score [hand]
-  (highest-paired-score hand 200))
+  (highest-paired-score hand 8000))
 
 (defn two-pair-score [hand]
-  (let [base-score 300
+  (let [base-score 9000
 	values (hand-values hand)]
     (+ base-score
        (apply max (flatten (filter #(= (count %) 2)
 				   (partition-by identity values)))))))
 
 (defn three-of-a-kind-score [hand]
-  (highest-paired-score hand 400))
+  (highest-paired-score hand 10000))
   
 (defn straight-score [hand]
-  (highest-value-score hand 500))
+  (highest-value-score hand 11000))
 
 (defn flush-score [hand]
-  (highest-value-score hand 600))
+  (highest-value-score hand 12000))
 
 (defn full-house-score [hand]
-  (highest-value-score hand 700))
+  (highest-value-score hand 13000))
 
 (defn four-of-a-kind-score [hand]
-  (highest-paired-score hand 800))
+  (highest-paired-score hand 14000))
 
 (defn straight-flush-score [hand]
-  (highest-value-score hand 900))
+  (highest-value-score hand 15000))
 
 (defn royal-flush-score [_]
-  1000)
+  16000)
   
 (defn compute-score [hand]
   (cond (royal-flush? hand) (royal-flush-score hand)

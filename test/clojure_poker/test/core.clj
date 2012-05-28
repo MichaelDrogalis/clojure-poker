@@ -252,11 +252,28 @@
 		            (card-of :nine :hearts)]}]
     (is (= #{:player-2} (winner-of players)))))
 
-(deftest high-cards
+(deftest high-card-statuses
   (let
-      [cards [(card-of :eight :hearts)
-	      (card-of :three :spades)
-	      (card-of :nine :hearts)
-	      (card-of :ace :diamonds)
-	      (card-of :five :clubs)]]
-    (is (= 29 (compute-score cards)))))
+      [players {:player-1 [(card-of :ace :hearts)
+		           (card-of :king :spades)
+		           (card-of :queen :hearts)
+		           (card-of :jack :diamonds)
+		           (card-of :nine :clubs)]
+		:player-2  [(card-of :two :hearts)
+		            (card-of :two :clubs)
+		            (card-of :king :hearts)
+		            (card-of :jack :diamonds)
+		            (card-of :nine :hearts)]}]
+    (is (= #{:player-2} (winner-of players))))
+  (let
+      [players {:player-1 [(card-of :ace :hearts)
+		           (card-of :king :spades)
+		           (card-of :queen :hearts)
+		           (card-of :jack :diamonds)
+		           (card-of :eight :clubs)]
+		:player-2 [(card-of :ace :hearts)
+		           (card-of :king :spades)
+		           (card-of :queen :hearts)
+		           (card-of :jack :diamonds)
+		           (card-of :nine :clubs)]}]
+    (is (= #{:player-2} (winner-of players)))))
