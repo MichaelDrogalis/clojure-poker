@@ -76,7 +76,7 @@
 (defn highest-paired-score [hand base-score]
   (let [values (hand-values hand)]
     (+ base-score
-       (first (apply max-key count (partition-by identity values))))))
+       (first (apply max-key count (partition-by identity (sort values)))))))
 
 (defn high-card-score [hand]
   (let [rank-names (map #(:name (:rank %)) hand)]
@@ -104,7 +104,7 @@
 	values (hand-values hand)]
     (+ base-score
        (apply max (flatten (filter #(= (count %) 2)
-				   (partition-by identity values)))))))
+				   (partition-by identity (sort values))))))))
 
 (defn three-of-a-kind-score [hand]
   (highest-paired-score hand 10000))
