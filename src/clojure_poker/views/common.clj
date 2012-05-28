@@ -6,14 +6,15 @@
             (html5
               [:head
                [:title "clojure-poker"]
-               (include-css "/css/reset.css")]
+               (include-css "/css/reset.css")
+	       (include-css "/css/theme.css")]
               [:body
                [:div#wrapper
                 content]]))
 
 (defpartial card [current-card]
-  [:span
-   {:class (str (name (:name (:rank current-card))) "-of-" (name (:suit current-card)))}])
+  [:div
+   {:class (str "card " (name (:name (:rank current-card))) "-of-" (name (:suit current-card)))}])
 (defpartial hand [cards]
   [:section.hand
    (map card cards)])

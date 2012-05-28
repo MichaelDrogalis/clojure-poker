@@ -1,0 +1,30 @@
+.card {
+    display: inline-block;
+    height: 123px;
+    margin: 3px;
+    width: 79px;
+}
+
+.ace-of-clubs {
+    background-image: url(/img/cards.png);
+}
+
+.king-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -948px 0;
+}
+
+.queen-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -869px 0;
+}
+
+.jack-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -790px 0;
+}
+
+.ten-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -711px 0;
+}
