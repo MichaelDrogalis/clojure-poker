@@ -20,13 +20,14 @@
 (defn pretty-card [card]
   (str (name (:name (:rank card))) " of " (name (:suit card))))
 
-(defn n-of-a-kind? [n hand]
-  (let [values (map :value (map :rank hand))]
-    (boolean (some #(= (count %) n)
-		   (partition-by identity values)))))
 
 (defn hand-values [hand]
   (map :value (map :rank hand)))
+
+(defn n-of-a-kind? [n hand]
+  (let [values (hand-values hand)]
+    (boolean (some #(= (count %) n)
+		   (partition-by identity (sort values))))))
 
 (defn high-card-value [hand-vals]
   (apply max hand-vals))

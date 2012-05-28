@@ -128,7 +128,12 @@
 		           (card-of :three :hearts)
 		           (card-of :five :spades)
 		           (card-of :king :clubs)
-		           (card-of :ace :clubs)]))))
+		           (card-of :ace :clubs)])))
+  (is (= true (one-pair? [(card-of :five :spades)
+		          (card-of :king :clubs)
+		          (card-of :jack :hearts)
+		          (card-of :five :clubs)
+		          (card-of :two :spades)]))))
 
 (deftest hand-comparisons
   (let
