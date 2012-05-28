@@ -10,3 +10,10 @@
               [:body
                [:div#wrapper
                 content]]))
+
+(defpartial card [current-card]
+  [:span
+   {:class (str (name (:name (:rank current-card))) "-of-" (name (:suit current-card)))}])
+(defpartial hand [cards]
+  [:section.hand
+   (map card cards)])
