@@ -20,7 +20,6 @@
 (defn pretty-card [card]
   (str (name (:name (:rank card))) " of " (name (:suit card))))
 
-;;; Generic status helpers.
 (defn n-of-a-kind? [n hand]
   (let [values (map :value (map :rank hand))]
     (boolean (some #(= (count %) n)
@@ -35,7 +34,6 @@
 (defn low-card-value [hand-vals]
   (apply min hand-vals))
 
-;;; Hand status functions.
 (defn one-pair? [hand]
   (n-of-a-kind? 2 hand))
 
@@ -71,7 +69,6 @@
        (= (into #{} (map :name (map :rank hand)))
 	  (into #{} (take-last 5 (map :name ranks))))))
 
-;;; Scoring functions.
 (defn highest-value-score [hand base-score]
   (+ base-score (high-card-value (hand-values hand))))
 
@@ -80,6 +77,12 @@
     (+ base-score
        (first (apply max-key count (partition-by identity values))))))
 
+(defn high-card-score [hand]
+  ;; This is safe to do because the scoring cond
+  ;; guarantees we don't have any duplicate card
+  ;; values.
+  (apply + (map #(:value (:rank %)) hand)))
+  
 (defn one-pair-score [hand]
   (highest-paired-score hand 200))
 
@@ -120,7 +123,8 @@
 	(straight? hand) (straight-score hand)
 	(three-of-a-kind? hand) (three-of-a-kind-score hand)
 	(two-pair? hand) (two-pair-score hand)
-	(one-pair? hand) (one-pair-score hand)))
+	(one-pair? hand) (one-pair-score hand)
+	:else (high-card-score hand)))
 
 (defn winner-of [players]
   (let [scores
@@ -130,6 +134,15 @@
 	high-score (second (apply max-key second scores))]
     (into #{} (map first (filter #(= high-score (second %)) scores)))))
 
+(defn play-game []
+  (let
+      [cards (shuffle deck)
+       players {:player-1 (take 5 cards)
+		:player-2 (take 5 (drop 5 cards))}]
+    (do
+      (println "Player 1 with " (map pretty-card (:player-1 players)))
+      (println "Player 2 with " (map pretty-card (:player-2 players)))      
+      (winner-of players))))
+
 (defn -main [& args]
   (play-game))
-

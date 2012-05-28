@@ -251,3 +251,12 @@
 		            (card-of :nine :diamonds)
 		            (card-of :nine :hearts)]}]
     (is (= #{:player-2} (winner-of players)))))
+
+(deftest high-cards
+  (let
+      [cards [(card-of :eight :hearts)
+	      (card-of :three :spades)
+	      (card-of :nine :hearts)
+	      (card-of :ace :diamonds)
+	      (card-of :five :clubs)]]
+    (is (= 29 (compute-score cards)))))
