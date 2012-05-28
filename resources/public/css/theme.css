@@ -28,3 +28,43 @@
     background-image: url(/img/cards.png);
     background-position: -711px 0;
 }
+
+.nine-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -632px 0;
+}
+
+.eight-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -553px 0;
+}
+
+.seven-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -474px 0;
+}
+
+.six-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -395px 0;
+}
+
+.five-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -316px 0;
+}
+
+.four-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -237px 0;
+}
+
+.three-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -158px 0;
+}
+
+.two-of-clubs {
+    background-image: url(/img/cards.png);
+    background-position: -79px 0;
+}

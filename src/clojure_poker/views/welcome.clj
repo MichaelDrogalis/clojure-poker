@@ -6,8 +6,8 @@
 (defpage "/" []
          (common/layout
 	  [:p "Welcome to clojure-poker"]
-	  [:p (common/hand [(card-of :ace :clubs)
-		            (card-of :king :clubs)
-		            (card-of :queen :clubs)
-		            (card-of :jack :clubs)
-		            (card-of :ten :clubs)])]))
+	  [:p (common/hand [(card-of :four :clubs)
+		            (card-of :three :clubs)
+		            (card-of :two :clubs)
+		            (card-of :six :clubs)
+		            (card-of :five :clubs)])]))
