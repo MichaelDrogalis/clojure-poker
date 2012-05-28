@@ -4,6 +4,12 @@
   (:use [noir.core :only [defpage]]))
 
 (defpage "/" []
-         (common/layout
-	  [:p "Welcome to clojure-poker"]
-	  [:p (common/hand (take 5 (shuffle deck)))]))
+  (let [shuffled-deck (shuffle deck)
+	player-1 (take 5 shuffled-deck)
+	player-2 (take 5 (drop 5 shuffled-deck))]
+    (common/layout
+     [:h3 "Player 1"]
+     (common/hand player-1)
+     [:h3 "Player 2"]
+     (common/hand player-2)
+     [:h3 "Winner is " (winner-of { :player-1 player-1 :player-2 player-2} )])))
