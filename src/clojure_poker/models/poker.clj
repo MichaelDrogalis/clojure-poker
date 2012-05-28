@@ -17,10 +17,6 @@
 		       (= (:suit %) suit))
 		 deck)))
 
-(defn pretty-card [card]
-  (str (name (:name (:rank card))) " of " (name (:suit card))))
-
-
 (defn hand-values [hand]
   (map :value (map :rank hand)))
 
@@ -146,14 +142,3 @@
 		      players))
 	high-score (second (apply max-key second scores))]
     (into #{} (map first (filter #(= high-score (second %)) scores)))))
-
-(defn play-game []
-  (let
-      [cards (shuffle deck)
-       players {:player-1 (take 5 cards)
-		:player-2 (take 5 (drop 5 cards))}]
-    (do
-      (println "Player 1 with " (map pretty-card (:player-1 players)))
-      (println "Player 2 with " (map pretty-card (:player-2 players)))      
-      (winner-of players))))
-
