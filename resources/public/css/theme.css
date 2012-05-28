@@ -68,3 +68,195 @@
     background-image: url(/img/cards.png);
     background-position: -79px 0;
 }
+
+.ace-of-diamonds {
+    background-image: url(/img/cards.png);
+}
+
+.king-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -948px -123px;
+}
+
+.queen-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -869px -123px;
+}
+
+.jack-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -79-123pxpx -123px;
+}
+
+.ten-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -711px -123px;
+}
+
+.nine-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -632px -123px;
+}
+
+.eight-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -553px -123px;
+}
+
+.seven-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -474px -123px;
+}
+
+.six-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -395px -123px;
+}
+
+.five-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -316px -123px;
+}
+
+.four-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -237px -123px;
+}
+
+.three-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -158px -123px;
+}
+
+.two-of-diamonds {
+    background-image: url(/img/cards.png);
+    background-position: -79px -123px;
+}
+
+.ace-of-hearts {
+    background-image: url(/img/cards.png);
+}
+
+.king-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -948px -246px;
+}
+
+.queen-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -869px -246px;
+}
+
+.jack-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -79-246pxpx -246px;
+}
+
+.ten-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -711px -246px;
+}
+
+.nine-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -632px -246px;
+}
+
+.eight-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -553px -246px;
+}
+
+.seven-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -474px -246px;
+}
+
+.six-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -395px -246px;
+}
+
+.five-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -316px -246px;
+}
+
+.four-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -237px -246px;
+}
+
+.three-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -158px -246px;
+}
+
+.two-of-hearts {
+    background-image: url(/img/cards.png);
+    background-position: -79px -246px;
+}
+
+.ace-of-spades {
+    background-image: url(/img/cards.png);
+}
+
+.king-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -948px -369px;
+}
+
+.queen-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -869px -369px;
+}
+
+.jack-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -79-369pxpx -369px;
+}
+
+.ten-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -711px -369px;
+}
+
+.nine-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -632px -369px;
+}
+
+.eight-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -553px -369px;
+}
+
+.seven-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -474px -369px;
+}
+
+.six-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -395px -369px;
+}
+
+.five-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -316px -369px;
+}
+
+.four-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -237px -369px;
+}
+
+.three-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -158px -369px;
+}
+
+.two-of-spades {
+    background-image: url(/img/cards.png);
+    background-position: -79px -369px;
+}
