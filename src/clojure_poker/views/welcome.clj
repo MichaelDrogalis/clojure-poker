@@ -25,6 +25,11 @@
        (player-row "Player 1" player-1)
        (player-row "Player 2" player-2)]
       [:div.five.columns
-       [:div.panel
+       [:div.row
+	[:div.twelve.columns
+	 [:div.panel
 	[:h3 "Winner is " (winner-of { :player-1 player-1 :player-2 player-2} )]
-	(link-to {:class "big blue nice radius button"} "#" "Generate test case")]]])))
+	(link-to {:class "big blue nice radius button"} "#" "Generate test case")]]]
+       [:div.row
+	[:div.twelve.columns
+	 [:div#test-case.panel]]]]])))
