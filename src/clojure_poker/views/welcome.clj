@@ -33,20 +33,18 @@
        (link-to {:class "big blue nice radius button"} "javascript:generateTestCase();" "Generate test case")]]
      [:div.row
 	[:div.twelve.columns
-	 [:pre#test-case]]])))
-
-(defpage "/to-test-case" []
-  (escape-html
-   "(deftest bug-report-test-case
-      (let
-        [players {:player-1 [(card-of :ace :hearts)
+	 [:pre#test-case
+           "(deftest bug-report-test-case
+             (let
+               [players {:player-1 [(card-of :ace :diamonds)
                              (card-of :king :spades)
                              (card-of :queen :hearts)
                              (card-of :jack :diamonds)
                              (card-of :nine :clubs)]
-                  :player-2 [(card-of :two :hearts)
+                         :player-2 [(card-of :two :hearts)
                              (card-of :two :clubs)
                              (card-of :king :hearts)
                              (card-of :jack :diamonds)
                              (card-of :nine :hearts)]}]
-        (is (= #{:player-2} (winner-of players)))))"))
+        (is (= #{:player-2} (winner-of players)))))"]]])))
+

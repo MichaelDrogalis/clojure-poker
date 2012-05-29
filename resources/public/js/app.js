@@ -1,15 +1,12 @@
 /* Foundation v2.2.1 http://foundation.zurb.com */
 
 function generateTestCase() {
-    $.get("/to-test-case", function(data) {
-        $("#test-case").text(data).addClass("brush: clojure");
-        SyntaxHighlighter.highlight();
-    });
+    $("#test-case").show().addClass("brush: clojure");
+    SyntaxHighlighter.highlight();
 }
 
-
 $(document).ready(function() {
-    SyntaxHighlighter.all();
+    $("#test-case").hide();
 
 	/* TABS --------------------------------- */
 	/* Remove if you don't need :) */
