@@ -10,9 +10,9 @@
 	       (include-css "/css/theme.css")
 	       (include-css "/css/ie.css")
 	       (include-css "/css/foundation.css")
+ 	       (include-js "/js/jquery.min.js")
 	       (include-js "/js/app.js")
 	       (include-js "/js/foundation.js")
- 	       (include-js "/js/jquery.min.js")
 	       (include-js "/js/modernizr.foundation.js")]
               [:body
                [:div#wrapper

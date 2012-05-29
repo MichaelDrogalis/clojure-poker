@@ -1,8 +1,13 @@
 /* Foundation v2.2.1 http://foundation.zurb.com */
-jQuery(document).ready(function ($) {
 
-	/* Use this js doc for all application specific JS */
+function generateTestCase() {
+    $.get("/to-test-case", function(data) {
+        $("#test-case").html(data);
+    });
+}
 
+
+$(document).ready(function() {
 	/* TABS --------------------------------- */
 	/* Remove if you don't need :) */
 

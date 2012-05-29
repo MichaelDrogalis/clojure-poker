@@ -2,7 +2,9 @@
   (:require [clojure-poker.views.common :as common])
   (:use [clojure-poker.models.poker])
   (:use [noir.core])
-  (:use [hiccup.element]))
+  (:use [hiccup.element])
+  (:use [hiccup.page])
+  (:use [hiccup.util]))
 
 (defpartial player-row [player-name cards]
   [:div.row
@@ -29,7 +31,23 @@
 	[:div.twelve.columns
 	 [:div.panel
 	[:h3 "Winner is " (winner-of { :player-1 player-1 :player-2 player-2} )]
-	(link-to {:class "big blue nice radius button"} "#" "Generate test case")]]]
+	(link-to {:class "big blue nice radius button"} "javascript:generateTestCase();" "Generate test case")]]]
        [:div.row
 	[:div.twelve.columns
 	 [:div#test-case.panel]]]]])))
+
+(defpage "/to-test-case" []
+  (escape-html
+   '(deftest bug-report-test-case
+      (let
+	  [players {:player-1 [(card-of :ace :hearts)
+			       (card-of :king :spades)
+			       (card-of :queen :hearts)
+			       (card-of :jack :diamonds)
+			       (card-of :nine :clubs)]
+		    :player-2  [(card-of :two :hearts)
+				(card-of :two :clubs)
+				(card-of :king :hearts)
+				(card-of :jack :diamonds)
+				(card-of :nine :hearts)]}]
+	(is (= #{:player-2} (winner-of players)))))))
