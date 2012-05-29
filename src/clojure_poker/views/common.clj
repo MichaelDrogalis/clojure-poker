@@ -7,11 +7,11 @@
               [:head
                [:title "clojure-poker"]
                (include-css "/css/reset.css")
-	       (include-css "/css/theme.css")
 	       (include-css "/css/ie.css")
 	       (include-css "/css/foundation.css")
 	       (include-css "/css/shCore.css")
 	       (include-css "/css/shThemeDefault.css")
+	       (include-css "/css/theme.css")
  	       (include-js "/js/jquery.min.js")
 	       (include-js "/js/app.js")
 	       (include-js "/js/foundation.js")
