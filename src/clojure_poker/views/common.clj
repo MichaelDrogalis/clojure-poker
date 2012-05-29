@@ -24,4 +24,4 @@
 
 (defpartial hand [cards]
   [:section.hand
-   (map card cards)])
+    (map card cards)])
