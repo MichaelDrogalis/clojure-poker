@@ -10,10 +10,14 @@
 	       (include-css "/css/theme.css")
 	       (include-css "/css/ie.css")
 	       (include-css "/css/foundation.css")
+	       (include-css "/css/shCore.css")
+	       (include-css "/css/shThemeDefault.css")
  	       (include-js "/js/jquery.min.js")
 	       (include-js "/js/app.js")
 	       (include-js "/js/foundation.js")
-	       (include-js "/js/modernizr.foundation.js")]
+	       (include-js "/js/modernizr.foundation.js")
+	       (include-js "/js/shCore.js")
+	       (include-js "/js/shBrushClojure.js")]
               [:body
                [:div#wrapper
                 content]]))

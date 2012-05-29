@@ -2,12 +2,15 @@
 
 function generateTestCase() {
     $.get("/to-test-case", function(data) {
-        $("#test-case").html(data);
+        $("#test-case").text(data).addClass("brush: clojure");
+        SyntaxHighlighter.highlight();
     });
 }
 
 
 $(document).ready(function() {
+    SyntaxHighlighter.all();
+
 	/* TABS --------------------------------- */
 	/* Remove if you don't need :) */
 

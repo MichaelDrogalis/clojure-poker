@@ -23,10 +23,10 @@
 	player-2 (take 5 (drop 5 shuffled-deck))]
     (common/layout
      [:div.row
-      [:div.seven.columns
+      [:div.six.columns
        (player-row "Player 1" player-1)
        (player-row "Player 2" player-2)]
-      [:div.five.columns
+      [:div.six.columns
        [:div.row
 	[:div.twelve.columns
 	 [:div.panel
@@ -34,11 +34,11 @@
 	(link-to {:class "big blue nice radius button"} "javascript:generateTestCase();" "Generate test case")]]]
        [:div.row
 	[:div.twelve.columns
-	 [:div#test-case.panel]]]]])))
+	 [:pre#test-case]]]]])))
 
 (defpage "/to-test-case" []
   (escape-html
-   '(deftest bug-report-test-case
+   "(deftest bug-report-test-case
       (let
 	  [players {:player-1 [(card-of :ace :hearts)
 			       (card-of :king :spades)
@@ -50,4 +50,4 @@
 				(card-of :king :hearts)
 				(card-of :jack :diamonds)
 				(card-of :nine :hearts)]}]
-	(is (= #{:player-2} (winner-of players)))))))
+	(is (= #{:player-2} (winner-of players)))))"))
