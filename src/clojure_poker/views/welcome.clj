@@ -38,7 +38,7 @@
 	   (str
 	    "(deftest bug-report-test-case\n"
              "  (let\n"
-               "    [players {:player-1 " player-1 "\n"
-                          "              :player-2 " player-2 "}]\n"
+               "    [players {:player-1 " (vector player-1) "\n"
+                          "              :player-2 " (vector player-2) "}]\n"
         "    (is (= " (winner-of { :player-1 player-1 :player-2 player-2}) " (winner-of players)))))" ))]]])))
 
