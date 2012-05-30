@@ -35,9 +35,10 @@
 	[:div.twelve.columns
 	 [:pre#test-case
 	  (escape-html
-	  '(deftest bug-report-test-case
-             (let
-               [players {:player-1 (:player-1 player-1)
-                         :player-2 (:player-2 player-2)}]
-        (is (= #{:player-2} (winner-of players))))))]]])))
+	   (str
+	    "(deftest bug-report-test-case\n"
+             "  (let\n"
+               "    [players {:player-1 " player-1 "\n"
+                          "              :player-2 " player-2 "}]\n"
+        "    (is (= " (winner-of { :player-1 player-1 :player-2 player-2}) " (winner-of players)))))" ))]]])))
 
