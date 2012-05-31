@@ -19,6 +19,18 @@ function showPlayer1Card1() {
     });
 }
 
+function showPlayer1Card2() {
+    $.get("/session/player-1",
+    function(data) {
+	var card = data[1];
+	var suit = card["suit"];
+        var name = card["rank"]["name"];
+        
+        $("#card-5").addClass(name + "-of-" + suit);
+	$("#card-5").removeClass("facedown-card");
+    });
+}
+
 $(document).ready(function() {
     $("#card-1").animate({
 	left: '+=250', top: '+=50'
@@ -34,7 +46,7 @@ $(document).ready(function() {
                 }, delay).promise().done(function() {
 		    $("#card-5").animate({
  	                left: '+=275', top: '+=50'
-                    }, delay).promise().done(function() {
+                    }, delay).promise().done(showPlayer1Card2).promise().done(function() {
 			$("#card-6").animate({
                             left: '+=275', top: '+=300'
 			}, delay).promise().done(function() {
