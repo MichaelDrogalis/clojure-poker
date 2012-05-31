@@ -1,6 +1,34 @@
 /* Foundation v2.2.1 http://foundation.zurb.com */
 
-var delay = 300;
+var delay = 250;
+
+function hideFlopCards() {
+    $("#flop-1").hide();
+    $("#flop-2").hide();
+    $("#flop-3").hide();
+}
+
+function dealFlopCards() {
+    $("#flop-1").show();
+    $("#flop-2").show();
+    $("#flop-3").show();
+
+    $("#flop-1").animate({
+	left: '-=200', top: '+=125'
+    }, delay).promise().done(function() {
+	$("#flop-2").animate({
+	    left: '-=100', top: '+=125'
+	}, delay).promise().done(function() {
+  	    $("#flop-3").animate({
+	        top: '+=125'
+            }, delay).promise().done(function() {
+		showCard("/session/flop", 0, "#flop-1");
+		showCard("/session/flop", 1, "#flop-2");
+		showCard("/session/flop", 2, "#flop-3");
+            });
+	});
+    });
+}
 
 function showCard(url, index, id) {
     $.get(url,
@@ -41,36 +69,40 @@ function showEveryonesHand() {
     showPlayer2Cards();
     showPlayer3Cards();
     showPlayer4Cards();
+    
+    dealFlopCards();
 }
 
 $(document).ready(function() {
+    hideFlopCards();
+    
     $("#play-hand").click(function() {
 	showEveryonesHand();
     });
     
     $("#card-1").animate({
-	left: '+=250', top: '+=50'
+	left: '+=350', top: '+=50'
     }, delay).promise().done(showPlayer1Card1).promise().done(function() {
         $("#card-2").animate({
-            left: '+=250', top: '+=300'
+            left: '+=350', top: '+=300'
         }, delay).promise().done(function() {
             $("#card-3").animate({
-                left: '-=250', top: '+=300'
+                left: '-=350', top: '+=300'
             }, delay).promise().done(function() {
 		$("#card-4").animate({
- 	            left: '-=250', top: '+=50'
+ 	            left: '-=350', top: '+=50'
                 }, delay).promise().done(function() {
 		    $("#card-5").animate({
- 	                left: '+=275', top: '+=50'
+ 	                left: '+=375', top: '+=50'
                     }, delay).promise().done(showPlayer1Card2).promise().done(function() {
 			$("#card-6").animate({
-                            left: '+=275', top: '+=300'
+                            left: '+=375', top: '+=300'
 			}, delay).promise().done(function() {
                 	    $("#card-7").animate({
-                                left: '-=225', top: '+=300'
+                                left: '-=325', top: '+=300'
                             }, delay).promise().done(function() {
 			        $("#card-8").animate({
-                                    left: '-=225', top: '+=50'
+                                    left: '-=325', top: '+=50'
                                 }, delay);
                             });
 			});

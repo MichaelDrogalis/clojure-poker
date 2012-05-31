@@ -47,14 +47,16 @@
 	 [:div#card-5.facedown-card.card]
 	 [:div#card-6.facedown-card.card]
 	 [:div#card-7.facedown-card.card]
-	 [:div#card-8.facedown-card.card]]]
+	 [:div#card-8.facedown-card.card]
+	 [:div#flop-1.facedown-card.card]
+	 [:div#flop-2.facedown-card.card]
+	 [:div#flop-3.facedown-card.card]]]
        [:div.row
 	[:div.two.columns
 	 (link-to {:class "big nice red radius button"} "#" "Fold")]
 	[:div.two.columns
 	 (link-to {:class "big nice green radius button" :id "play-hand"} "#" "Play")]
-	[:div.eight.columns]]
-       ))))
+	[:div.eight.columns]]))))
 
 (defn session-response [key]
   (response/json (session/get key "Not found")))
