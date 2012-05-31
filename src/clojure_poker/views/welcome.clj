@@ -40,19 +40,7 @@
 	 [:div#card-5.facedown-card.card]
 	 [:div#card-6.facedown-card.card]
 	 [:div#card-7.facedown-card.card]
-	 [:div#card-8.facedown-card.card]
-	 [:div#card-9.facedown-card.card]
-	 [:div#card-10.facedown-card.card]
-	 [:div#card-11.facedown-card.card]
-	 [:div#card-12.facedown-card.card]
-	 [:div#card-13.facedown-card.card]
-	 [:div#card-14.facedown-card.card]
-	 [:div#card-15.facedown-card.card]
-	 [:div#card-16.facedown-card.card]
-	 [:div#card-17.facedown-card.card]
-	 [:div#card-18.facedown-card.card]
-	 [:div#card-19.facedown-card.card]
-	 [:div#card-20.facedown-card.card]]]))))
+	 [:div#card-8.facedown-card.card]]]))))
 
 (defn player-cards [player]
   (response/json (session/get player "Not found")))

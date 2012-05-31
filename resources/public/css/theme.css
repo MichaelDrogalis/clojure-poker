@@ -1,3 +1,7 @@
+body {
+    background-color: #ABC;
+}
+
 #poker-table {
     background: url(/img/table.png);
     height:547px;
