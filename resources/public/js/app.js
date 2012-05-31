@@ -27,8 +27,20 @@ function showPlayer2Cards() {
     showCard("/session/player-2", 1, "#card-6");
 }
 
+function showPlayer3Cards() {
+    showCard("/session/player-3", 0, "#card-3");
+    showCard("/session/player-3", 1, "#card-7");
+}
+
+function showPlayer4Cards() {
+    showCard("/session/player-4", 0, "#card-4");
+    showCard("/session/player-4", 1, "#card-8");
+}
+
 function showEveryonesHand() {
     showPlayer2Cards();
+    showPlayer3Cards();
+    showPlayer4Cards();
 }
 
 $(document).ready(function() {

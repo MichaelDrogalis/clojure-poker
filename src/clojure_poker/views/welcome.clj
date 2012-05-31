@@ -56,11 +56,11 @@
   (player-cards :player-1-cards))
 
 (defpage "/session/player-2" []
-  (player-cards :player-2-cards)))
+  (player-cards :player-2-cards))
 
 (defpage "/session/player-3" []
-  (player-cards :player-3-cards)))
+  (player-cards :player-3-cards))
 
 (defpage "/session/player-4" []
-  (player-cards :player-4-cards)))
+  (player-cards :player-4-cards))
 
