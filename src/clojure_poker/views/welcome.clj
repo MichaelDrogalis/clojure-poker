@@ -26,8 +26,8 @@
 	player-3-cards (take 2 (drop 4 cards))
 	player-4-cards (take 2 (drop 6 cards))
 	flop (take 3 (drop 8 cards))
-	turn (first (drop 11 cards))
-	river (first (drop 12 cards))]
+	turn (take 1 (drop 11 cards))
+	river (take 1 (drop 12 cards))]
     (do
       (session/put! :player-1-cards player-1-cards)
       (session/put! :player-2-cards player-2-cards)
@@ -50,7 +50,9 @@
 	 [:div#card-8.facedown-card.card]
 	 [:div#flop-1.facedown-card.card]
 	 [:div#flop-2.facedown-card.card]
-	 [:div#flop-3.facedown-card.card]]]
+	 [:div#flop-3.facedown-card.card]
+	 [:div#turn.facedown-card.card]
+	 [:div#river.facedown-card.card]]]
        [:div.row
 	[:div.two.columns
 	 (link-to {:class "big nice red radius button"} "#" "Fold")]
@@ -75,3 +77,9 @@
 
 (defpage "/session/flop" []
   (session-response :flop))
+
+(defpage "/session/turn" []
+  (session-response :turn))
+
+(defpage "/session/river" []
+  (session-response :river))

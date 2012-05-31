@@ -2,10 +2,12 @@
 
 var delay = 250;
 
-function hideFlopCards() {
+function hideCommunityCards() {
     $("#flop-1").hide();
     $("#flop-2").hide();
     $("#flop-3").hide();
+    $("#turn").hide();
+    $("#river").hide();
 }
 
 function dealFlopCards() {
@@ -25,9 +27,28 @@ function dealFlopCards() {
 		showCard("/session/flop", 0, "#flop-1");
 		showCard("/session/flop", 1, "#flop-2");
 		showCard("/session/flop", 2, "#flop-3");
+            }).promise().done(function() {
+		dealTurnAndRiver();
             });
 	});
     });
+}
+
+function dealTurnAndRiver() {
+    $("#turn").show();
+    $("#river").show();
+
+    $("#turn").animate({
+	left: '+=100', top: '+=125'
+    }, delay).promise().done(function() {
+        showCard("/session/turn", 0, "#turn")
+    }).promise().done(function() {
+	    $("#river").animate({
+		left: '+=200', top: '+=125'
+            }, delay).promise().done(function() {
+		showCard("session/river", 0, "#river");
+	    });
+	}, delay);
 }
 
 function showCard(url, index, id) {
@@ -74,7 +95,7 @@ function showEveryonesHand() {
 }
 
 $(document).ready(function() {
-    hideFlopCards();
+    hideCommunityCards();
     
     $("#play-hand").click(function() {
 	showEveryonesHand();
