@@ -2,52 +2,29 @@
 
 var delay = 300;
 
-function generateTestCase() {
-    $("#test-case").show().addClass("brush: clojure");
-    SyntaxHighlighter.highlight();
+function showCard(url, index, id) {
+    $.get(url,
+    function(data) {
+	var card = data[index];
+	var suit = card["suit"];
+        var name = card["rank"]["name"];
+        
+        $(id).addClass(name + "-of-" + suit);
+	$(id).removeClass("facedown-card");
+    });
 }
 
 function showPlayer1Card1() {
-    $.get("/session/player-1",
-    function(data) {
-	var card = data[0];
-	var suit = card["suit"];
-        var name = card["rank"]["name"];
-        
-        $("#card-1").addClass(name + "-of-" + suit);
-	$("#card-1").removeClass("facedown-card");
-    });
+    showCard("/session/player-1", 0, "#card-1");
 }
 
 function showPlayer1Card2() {
-    $.get("/session/player-1",
-    function(data) {
-	var card = data[1];
-	var suit = card["suit"];
-        var name = card["rank"]["name"];
-        
-        $("#card-5").addClass(name + "-of-" + suit);
-	$("#card-5").removeClass("facedown-card");
-    });
+    showCard("/session/player-1", 1, "#card-5");
 }
 
 function showPlayer2Cards() {
-    $.get("/session/player-2",
-    function(data) {
-	var card = data[0];
-	var suit = card["suit"];
-        var name = card["rank"]["name"];
-        
-        $("#card-2").addClass(name + "-of-" + suit);
-	$("#card-2").removeClass("facedown-card");
-
-	var card = data[1];
-	var suit = card["suit"];
-        var name = card["rank"]["name"];
-        
-        $("#card-6").addClass(name + "-of-" + suit);
-	$("#card-6").removeClass("facedown-card");
-    });
+    showCard("/session/player-2", 0, "#card-2");
+    showCard("/session/player-2", 1, "#card-6");
 }
 
 function showEveryonesHand() {
