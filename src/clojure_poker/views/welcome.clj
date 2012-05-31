@@ -24,12 +24,19 @@
 	player-1-cards (take 2 cards)
 	player-2-cards (take 2 (drop 2 cards))
 	player-3-cards (take 2 (drop 4 cards))
-	player-4-cards (take 2 (drop 6 cards))]
+	player-4-cards (take 2 (drop 6 cards))
+	flop (take 3 (drop 8 cards))
+	turn (first (drop 11 cards))
+	river (first (drop 12 cards))]
     (do
       (session/put! :player-1-cards player-1-cards)
       (session/put! :player-2-cards player-2-cards)
       (session/put! :player-3-cards player-3-cards)
       (session/put! :player-4-cards player-4-cards)
+      (session/put! :flop flop)
+      (session/put! :turn turn)
+      (session/put! :river river)
+      
       (common/layout
        [:div#poker-table.row
 	[:div.twelve.columns
@@ -49,18 +56,20 @@
 	[:div.eight.columns]]
        ))))
 
-(defn player-cards [player]
-  (response/json (session/get player "Not found")))
+(defn session-response [key]
+  (response/json (session/get key "Not found")))
 
 (defpage "/session/player-1" []
-  (player-cards :player-1-cards))
+  (session-response :player-1-cards))
 
 (defpage "/session/player-2" []
-  (player-cards :player-2-cards))
+  (session-response :player-2-cards))
 
 (defpage "/session/player-3" []
-  (player-cards :player-3-cards))
+  (session-response :player-3-cards))
 
 (defpage "/session/player-4" []
-  (player-cards :player-4-cards))
+  (session-response :player-4-cards))
 
+(defpage "/session/flop" []
+  (session-response :flop))
