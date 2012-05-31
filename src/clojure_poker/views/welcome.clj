@@ -2,6 +2,8 @@
   (:require [clojure-poker.views.common :as common])
   (:use [clojure-poker.models.poker])
   (:use [noir.core])
+  (:require [noir.response :as response])
+  (:require [noir.session :as session])
   (:use [hiccup.element])
   (:use [hiccup.page])
   (:use [hiccup.util]))
@@ -18,26 +20,52 @@
        (common/hand cards)]]]]])
 
 (defpage "/" []
-  (common/layout
-   [:div#poker-table.row
-    [:div.twelve.columns
-     [:div#card-1.facedown-card]
-     [:div#card-2.facedown-card]
-     [:div#card-3.facedown-card]
-     [:div#card-4.facedown-card]
-     [:div#card-5.facedown-card]
-     [:div#card-6.facedown-card]
-     [:div#card-7.facedown-card]
-     [:div#card-8.facedown-card]
-     [:div#card-9.facedown-card]
-     [:div#card-10.facedown-card]
-     [:div#card-11.facedown-card]
-     [:div#card-12.facedown-card]
-     [:div#card-13.facedown-card]
-     [:div#card-14.facedown-card]
-     [:div#card-15.facedown-card]
-     [:div#card-16.facedown-card]
-     [:div#card-17.facedown-card]
-     [:div#card-18.facedown-card]
-     [:div#card-19.facedown-card]
-     [:div#card-20.facedown-card]]]))
+  (let [cards (shuffle deck)
+	player-1-cards (take 2 cards)
+	player-2-cards (take 2 (drop 2 cards))
+	player-3-cards (take 2 (drop 4 cards))
+	player-4-cards (take 2 (drop 6 cards))]
+    (do
+      (session/put! :player-1-cards player-1-cards)
+      (session/put! :player-2-cards player-2-cards)
+      (session/put! :player-3-cards player-3-cards)
+      (session/put! :player-4-cards player-4-cards)
+      (common/layout
+       [:div#poker-table.row
+	[:div.twelve.columns
+	 [:div#card-1.facedown-card.card]
+	 [:div#card-2.facedown-card.card]
+	 [:div#card-3.facedown-card.card]
+	 [:div#card-4.facedown-card.card]
+	 [:div#card-5.facedown-card.card]
+	 [:div#card-6.facedown-card.card]
+	 [:div#card-7.facedown-card.card]
+	 [:div#card-8.facedown-card.card]
+	 [:div#card-9.facedown-card.card]
+	 [:div#card-10.facedown-card.card]
+	 [:div#card-11.facedown-card.card]
+	 [:div#card-12.facedown-card.card]
+	 [:div#card-13.facedown-card.card]
+	 [:div#card-14.facedown-card.card]
+	 [:div#card-15.facedown-card.card]
+	 [:div#card-16.facedown-card.card]
+	 [:div#card-17.facedown-card.card]
+	 [:div#card-18.facedown-card.card]
+	 [:div#card-19.facedown-card.card]
+	 [:div#card-20.facedown-card.card]]]))))
+
+(defn player-cards [player]
+  (response/json (session/get player "Not found")))
+
+(defpage "/session/player-1" []
+  (player-cards :player-1-cards))
+
+(defpage "/session/player-2" []
+  (escape-html (player-cards :player-2-cards)))
+
+(defpage "/session/player-3" []
+  (escape-html (player-cards :player-3-cards)))
+
+(defpage "/session/player-4" []
+  (escape-html (player-cards :player-4-cards)))
+

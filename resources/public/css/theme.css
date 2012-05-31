@@ -7,6 +7,11 @@
 .facedown-card {
     background: url(/img/cards.png);
     background-position: -158px -492px;
+}
+
+.card {
+    display: inline-block;
+
     height: 123px;
     width: 79px;
     
@@ -14,13 +19,6 @@
     top: 50px;
     left: 360px;
     z-index: 500;
-}
-
-.card {
-    display: inline-block;
-    height: 123px;
-    margin: 3px;
-    width: 79px;
 }
 
 .ace-of-clubs {

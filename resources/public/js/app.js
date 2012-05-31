@@ -7,10 +7,22 @@ function generateTestCase() {
     SyntaxHighlighter.highlight();
 }
 
+function showPlayer1Card1() {
+    $.get("/session/player-1",
+    function(data) {
+	var card = data[0];
+	var suit = card["suit"];
+        var name = card["rank"]["name"];
+        
+        $("#card-1").addClass(name + "-of-" + suit);
+	$("#card-1").removeClass("facedown-card");
+    });
+}
+
 $(document).ready(function() {
     $("#card-1").animate({
 	left: '+=250', top: '+=50'
-    }, delay).promise().done(function() {
+    }, delay).promise().done(showPlayer1Card1).promise().done(function() {
         $("#card-2").animate({
             left: '+=250', top: '+=300'
         }, delay).promise().done(function() {
