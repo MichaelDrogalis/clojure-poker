@@ -40,7 +40,14 @@
 	 [:div#card-5.facedown-card.card]
 	 [:div#card-6.facedown-card.card]
 	 [:div#card-7.facedown-card.card]
-	 [:div#card-8.facedown-card.card]]]))))
+	 [:div#card-8.facedown-card.card]]]
+       [:div.row
+	[:div.two.columns
+	 (link-to {:class "big nice red radius button"} "#" "Fold")]
+	[:div.two.columns
+	 (link-to {:class "big nice green radius button"} "#" "Play")]
+	[:div.eight.columns]]
+       ))))
 
 (defn player-cards [player]
   (response/json (session/get player "Not found")))
