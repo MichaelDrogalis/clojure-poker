@@ -1,3 +1,9 @@
+#poker-table {
+    background: url(/img/table.png);
+    height:547px;
+    width:794px;
+}
+
 .card {
     display: inline-block;
     height: 123px;
