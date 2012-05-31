@@ -45,7 +45,7 @@
 	[:div.two.columns
 	 (link-to {:class "big nice red radius button"} "#" "Fold")]
 	[:div.two.columns
-	 (link-to {:class "big nice green radius button"} "#" "Play")]
+	 (link-to {:class "big nice green radius button" :id "play-hand"} "#" "Play")]
 	[:div.eight.columns]]
        ))))
 
@@ -56,11 +56,11 @@
   (player-cards :player-1-cards))
 
 (defpage "/session/player-2" []
-  (escape-html (player-cards :player-2-cards)))
+  (player-cards :player-2-cards)))
 
 (defpage "/session/player-3" []
-  (escape-html (player-cards :player-3-cards)))
+  (player-cards :player-3-cards)))
 
 (defpage "/session/player-4" []
-  (escape-html (player-cards :player-4-cards)))
+  (player-cards :player-4-cards)))
 

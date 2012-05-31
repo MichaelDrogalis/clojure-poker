@@ -31,7 +31,34 @@ function showPlayer1Card2() {
     });
 }
 
+function showPlayer2Cards() {
+    $.get("/session/player-2",
+    function(data) {
+	var card = data[0];
+	var suit = card["suit"];
+        var name = card["rank"]["name"];
+        
+        $("#card-2").addClass(name + "-of-" + suit);
+	$("#card-2").removeClass("facedown-card");
+
+	var card = data[1];
+	var suit = card["suit"];
+        var name = card["rank"]["name"];
+        
+        $("#card-6").addClass(name + "-of-" + suit);
+	$("#card-6").removeClass("facedown-card");
+    });
+}
+
+function showEveryonesHand() {
+    showPlayer2Cards();
+}
+
 $(document).ready(function() {
+    $("#play-hand").click(function() {
+	showEveryonesHand();
+    });
+    
     $("#card-1").animate({
 	left: '+=250', top: '+=50'
     }, delay).promise().done(showPlayer1Card1).promise().done(function() {
