@@ -14,6 +14,15 @@ body {
     text-align: center;
 }
 
+#pot-1 {
+    background: url(/img/chips.png);
+    position: relative;
+    height: 100px;
+    left: 340px;
+    top: 300px;
+    width: 100px;
+}
+
 .facedown-card {
     background: url(/img/cards.png);
     background-position: -158px -492px;

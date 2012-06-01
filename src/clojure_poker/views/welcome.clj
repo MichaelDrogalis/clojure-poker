@@ -58,7 +58,8 @@
 	 [:div#flop-2.facedown-card.card]
 	 [:div#flop-3.facedown-card.card]
 	 [:div#turn.facedown-card.card]
-	 [:div#river.facedown-card.card]]]
+	 [:div#river.facedown-card.card]
+	 [:div#pot-1]]]
        [:div.row
 	[:div#winner.twelve.columns]]
        [:div.row

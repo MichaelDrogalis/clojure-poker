@@ -8,6 +8,8 @@ function hideCommunityCards() {
     $("#flop-3").hide();
     $("#turn").hide();
     $("#river").hide();
+
+    $("#pot-1").hide();
 }
 
 function dealFlopCards() {
@@ -55,9 +57,31 @@ function dealTurnAndRiver() {
 
 function showWinner() {
     $.get("/session/winner",
-     function(data) {
-	    $("#winner").text(data + " wins");
-     });
+     function (data) {
+	 $("#winner").text(data + " wins");
+
+	 $("#pot-1").show();
+
+	 if (data == "player-1") {
+	     $("#pot-1").animate({
+		 top: '-=90', left: '+=320'
+	     }, 500);
+	 } else if (data == "player-2") {
+	     $("#pot-1").animate({
+		 left: '+=300'
+	     }, 500);
+         } else if (data == "player-3") {
+	     $("#pot-1").animate({
+		 left: '-=300'
+	     }, 500);
+         } else if (data == "player-4") {
+	     $("#pot-1").animate({
+		 top: '-=90', left: '-=320'
+	     }, 500);
+         } else {
+	     alert("Split pot. I don't feel like dealing with this at the moment.");
+	 }
+    });
 }
 
 function showCard(url, index, selector) {
