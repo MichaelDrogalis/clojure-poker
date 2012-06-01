@@ -47,8 +47,17 @@ function dealTurnAndRiver() {
 		left: '+=200', top: '+=125'
             }, delay).promise().done(function() {
 		showCard("session/river", 0, "#river");
-	    });
-	}, delay);
+	    }).promise().done(function() {
+		showWinner();
+            });
+    }, delay);
+}
+
+function showWinner() {
+    $.get("/session/winner",
+     function(data) {
+	    $("#winner").text(data + " wins");
+     });
 }
 
 function showCard(url, index, selector) {

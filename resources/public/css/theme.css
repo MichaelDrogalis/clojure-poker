@@ -8,6 +8,14 @@ body {
     width:794px;
 }
 
+#winner {
+    position: relative;
+    top: 350px;
+    left: 360px;
+    font-size: 20px;
+    color: #FFF;
+}
+
 .facedown-card {
     background: url(/img/cards.png);
     background-position: -158px -492px;

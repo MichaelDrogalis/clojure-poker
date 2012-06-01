@@ -27,7 +27,12 @@
 	player-4-cards (take 2 (drop 6 cards))
 	flop (take 3 (drop 8 cards))
 	turn (take 1 (drop 11 cards))
-	river (take 1 (drop 12 cards))]
+	river (take 1 (drop 12 cards))
+	winner (winner-of {:player-1 (concat player-1-cards flop turn river)
+			   :player-2 (concat player-2-cards flop turn river)
+			   :player-3 (concat player-3-cards flop turn river)
+			   :player-4 (concat player-4-cards flop turn river)
+			  })]
     (do
       (session/put! :player-1-cards player-1-cards)
       (session/put! :player-2-cards player-2-cards)
@@ -36,6 +41,7 @@
       (session/put! :flop flop)
       (session/put! :turn turn)
       (session/put! :river river)
+      (session/put! :winner winner)
       
       (common/layout
        [:div#poker-table.row
@@ -52,7 +58,8 @@
 	 [:div#flop-2.facedown-card.card]
 	 [:div#flop-3.facedown-card.card]
 	 [:div#turn.facedown-card.card]
-	 [:div#river.facedown-card.card]]]
+	 [:div#river.facedown-card.card]
+	 [:div#winner]]]
        [:div.row
 	[:div.two.columns
 	 (link-to {:class "big nice red radius button"} "#" "Fold")]
@@ -83,3 +90,6 @@
 
 (defpage "/session/river" []
   (session-response :river))
+
+(defpage "/session/winner" []
+  (session-response :winner))
