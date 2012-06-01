@@ -27,6 +27,7 @@ body {
 
 .ace-of-clubs {
     background-image: url(/img/cards.png);
+    background-position: 0 0;
 }
 
 .king-of-clubs {
@@ -91,6 +92,7 @@ body {
 
 .ace-of-diamonds {
     background-image: url(/img/cards.png);
+    background-position: 0 -123px;
 }
 
 .king-of-diamonds {
@@ -105,7 +107,7 @@ body {
 
 .jack-of-diamonds {
     background-image: url(/img/cards.png);
-    background-position: -79-123pxpx -123px;
+    background-position: -790px -123px;
 }
 
 .ten-of-diamonds {
@@ -155,6 +157,7 @@ body {
 
 .ace-of-hearts {
     background-image: url(/img/cards.png);
+    background-position: 0 -246px;
 }
 
 .king-of-hearts {
@@ -169,7 +172,7 @@ body {
 
 .jack-of-hearts {
     background-image: url(/img/cards.png);
-    background-position: -79-246pxpx -246px;
+    background-position: -790px -246px;
 }
 
 .ten-of-hearts {
@@ -219,6 +222,7 @@ body {
 
 .ace-of-spades {
     background-image: url(/img/cards.png);
+    background-position: 0 -369px;
 }
 
 .king-of-spades {
@@ -233,7 +237,7 @@ body {
 
 .jack-of-spades {
     background-image: url(/img/cards.png);
-    background-position: -79-369pxpx -369px;
+    background-position: -790px -369px;
 }
 
 .ten-of-spades {

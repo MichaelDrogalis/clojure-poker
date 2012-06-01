@@ -51,15 +51,15 @@ function dealTurnAndRiver() {
 	}, delay);
 }
 
-function showCard(url, index, id) {
+function showCard(url, index, selector) {
     $.get(url,
     function(data) {
 	var card = data[index];
 	var suit = card["suit"];
         var name = card["rank"]["name"];
         
-        $(id).addClass(name + "-of-" + suit);
-	$(id).removeClass("facedown-card");
+        $(selector).addClass(name + "-of-" + suit);
+	$(selector).removeClass("facedown-card");
     });
 }
 
