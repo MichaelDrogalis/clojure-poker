@@ -15,7 +15,7 @@ function dealFlopCards() {
     $("#flop-2").show();
     $("#flop-3").show();
 
-    $("#flop-1").animate({
+    $("#flop-1").delay(2000).animate({
 	left: '-=200', top: '+=125'
     }, delay).promise().done(function() {
 	$("#flop-2").animate({
@@ -38,12 +38,12 @@ function dealTurnAndRiver() {
     $("#turn").show();
     $("#river").show();
 
-    $("#turn").animate({
+    $("#turn").delay(2000).animate({
 	left: '+=100', top: '+=125'
     }, delay).promise().done(function() {
         showCard("/session/turn", 0, "#turn")
     }).promise().done(function() {
-	    $("#river").animate({
+	    $("#river").delay(2000).animate({
 		left: '+=200', top: '+=125'
             }, delay).promise().done(function() {
 		showCard("session/river", 0, "#river");
