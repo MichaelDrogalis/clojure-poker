@@ -9,11 +9,9 @@ body {
 }
 
 #winner {
-    position: relative;
-    top: 350px;
-    left: 360px;
-    font-size: 20px;
-    color: #FFF;
+    color: #000;
+    font-size: 40px;
+    text-align: center;
 }
 
 .facedown-card {

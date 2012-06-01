@@ -58,8 +58,9 @@
 	 [:div#flop-2.facedown-card.card]
 	 [:div#flop-3.facedown-card.card]
 	 [:div#turn.facedown-card.card]
-	 [:div#river.facedown-card.card]
-	 [:div#winner]]]
+	 [:div#river.facedown-card.card]]]
+       [:div.row
+	[:div#winner.twelve.columns]]
        [:div.row
 	[:div.two.columns
 	 (link-to {:class "big nice red radius button"} "#" "Fold")]
